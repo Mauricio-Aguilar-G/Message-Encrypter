@@ -24,6 +24,7 @@
         </div>
         <div class="right-panel">
             <div class="top">
+                <h1 id="preview">No has ingresado ningun mensaje...</h1>
                 <textarea id="show" class="input" cols="22" rows="15" placeholder="Aqui veras tu encriptado"></textarea>
             </div>
             <div class="bottom">
@@ -44,6 +45,10 @@
 
                 // Alert the copied text
                 alert("Copied the text: " + copyText.value);
+
+                document.getElementById("preview").style.display = "unset";
+                document.getElementById("show").value="";
+                document.getElementById("show").style.display = "none";
             }
             function getMsgEncrypt(){
                 var elem = document.getElementById("msg");
@@ -53,6 +58,7 @@
                 var crypt = encrypt(msg);
                 elem.value = "";
                 show.value = crypt.toString();
+                viewShow();
             }
             function encrypt(string){
                 var msg_encrypt = "";
@@ -69,6 +75,7 @@
                 var d_crypt = desencrypt(msg);
                 elem.value = "";
                 show.value = d_crypt.toString();
+                viewShow();
             }
             function desencrypt(string){
                 var msg_desencrypt = "";
@@ -112,6 +119,10 @@
             }
             function desencryptRules(string){
                 if (string == "ai"){return "a";}
+            }
+            function viewShow(){
+                document.getElementById("preview").style.display = "none";
+                document.getElementById("show").style.display = "unset";
             }
             </script>
     </main>
